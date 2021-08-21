@@ -15,54 +15,13 @@
 	<main class="main">
 		<div class="p-2">
 			<h4>Auth code</h4>
-			<input type="text" class="form-control" id="authcode" placeholder="auth code">
-		</div>
-		<div class="p-2">
-			<h4>Client id</h4>
-			<input type="text" class="form-control" id="clientid" placeholder="application client id">
-		</div>
-		<div class="p-2">
-			<h4>Client secret</h4>
-			<input type="text" class="form-control" id="clientsecret" placeholder="application client secret">
-		</div>
-		<div class="p-2 d-grid">
-			<button class="btn btn-primary" id="getBtn">Get token</button>
-		</div>
-		<div class="p-2">
-			<h4>Auth token</h4>
-			<input type="text" class="form-control" id="authtoken" placeholder="auth token">
+			<input type="text" class="form-control" id="authcodein" placeholder="auth code">
 		</div>
 		<script type="text/javascript">
-			let authcode=document.getElementById('authcode');
-			let clientid=document.getElementById('clientid');
-			let clientsecret=document.getElementById('clientsecret');
-			let authtoken=document.getElementById('authtoken');
-			let getBtn=document.getElementById('getBtn');
-
+			let aci=document.getElementById('authcodein');
 			window.addEventListener('load',function(){
 				let url=new URL(window.location.href);
-				let code=url.searchParams.get('code');
-				authcode.value=code;
-
-				getBtn.addEventListener('click',function(){
-					fetch('https://open-api.trovo.live/openplatform/exchangetoken',{
-						method:'POST',
-						headers:{
-							'Accept':'application/json',
-							'Access-Control-Allow-Origin':'https://oexlkinq.github.io',
-							'Client-ID':clientid.value,
-							'Content-Type':'application/json',
-						},
-						body:JSON.stringify({
-							client_secret:clientsecret.value,
-							grant_type:'authorization_code',
-							code,
-							redirect_uri:"https%3A%2F%2Foexlkinq.github.io%2Ftrovo-getting-oauth-token%2Fredir",
-						}),
-					}).then((r)=>r.json()).then((r)=>{
-						authtoken.value=r;
-					});
-				});
+				aci.value=url.searchParams.get('code');
 			});
 		</script>
 	</main>
