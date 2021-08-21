@@ -1,2 +1,2 @@
 # trovo-getting-oauth-token
-the method of obtaining oauth tokens for Trovo accounts. probably the wrong one
+method of obtaining the code for obtaining an oauth token for the Trovo account. probably the wrong one
